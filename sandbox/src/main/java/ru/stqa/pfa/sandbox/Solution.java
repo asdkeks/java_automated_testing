@@ -1,6 +1,5 @@
 package ru.stqa.pfa.sandbox;
 
-import java.util.Arrays;
 
 public class Solution {
     public static int[] twoSum(int[] nums, int target) {
