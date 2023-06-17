@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.util.Random;
 
-public class SolutionTest {
+public class TwoSumSolutionTest {
 
     @Test
     public void testSolution() {
@@ -13,7 +13,7 @@ public class SolutionTest {
         int randomIndex = rd.nextInt((nums.length - 1));
         int target = nums[randomIndex] + nums[randomIndex + 1];
         int[] expected = {randomIndex,(randomIndex+1)};
-        Assert.assertEquals(Solution.twoSum(nums, target), expected);
+        Assert.assertEquals(TwoSumSolution.twoSum(nums, target), expected);
     }
 
     public static int[] arrayGeneration() {
