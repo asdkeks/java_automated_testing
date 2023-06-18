@@ -3,7 +3,6 @@ package ru.stqa.pfa.sandbox;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-
 public class PalindromeNumberSolutionTest {
 
     @Test
