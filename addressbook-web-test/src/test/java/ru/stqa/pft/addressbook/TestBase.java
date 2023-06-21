@@ -1,19 +1,20 @@
 package ru.stqa.pft.addressbook;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
-import java.util.*;
 
+import java.util.HashMap;
+import java.util.Map;
 
-public class AddressBookWebTest {
+public class TestBase {
+
+    JavascriptExecutor js;
     private WebDriver driver;
     private Map<String, Object> vars;
-    JavascriptExecutor js;
 
     @BeforeTest
     public void setUp() {
@@ -35,20 +36,11 @@ public class AddressBookWebTest {
         driver.quit();
     }
 
-    @Test
-    public void testGroupCreation() {
-        goToGroupPage();
-        initGroupCreation();
-        fillInGroupForm(new GroupDelta("test1", "test2", "test3"));
-        submitGroupCreation();
-        goToGroupPage();
-    }
-
-    private void submitGroupCreation() {
+    protected void submitGroupCreation() {
         driver.findElement(By.name("submit")).click();
     }
 
-    private void fillInGroupForm(GroupDelta groupDelta) {
+    protected void fillInGroupForm(GroupDelta groupDelta) {
         driver.findElement(By.name("group_name")).click();
         driver.findElement(By.name("group_name")).sendKeys(groupDelta.getName());
         driver.findElement(By.name("group_header")).click();
@@ -57,12 +49,19 @@ public class AddressBookWebTest {
         driver.findElement(By.name("group_footer")).sendKeys(groupDelta.getFooter());
     }
 
-    private void initGroupCreation() {
+    protected void initGroupCreation() {
         driver.findElement(By.name("new")).click();
     }
 
-    private void goToGroupPage() {
+    protected void goToGroupPage() {
         driver.findElement(By.linkText("groups")).click();
     }
-}
 
+    protected void deleteSelectedGroups() {
+        driver.findElement(By.name("delete")).click();
+    }
+
+    protected void selectGroup() {
+        driver.findElement(By.name("selected[]")).click();
+    }
+}
