@@ -17,6 +17,8 @@ public class MainClass {
         System.out.println((RomanToIntegerSolution.romanToInt("MCMXCIV")));
 
         System.out.println(LongestCommonPrefixSolution.longestCommonPrefix(new String[]{"flower","flowe", "flowers"}));
+
+        System.out.println(ValidParenthesesSolution.isValid("(()){{}}"));
     }
 
 }
