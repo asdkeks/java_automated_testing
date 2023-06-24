@@ -18,6 +18,7 @@ public class ApplicationManager {
 
     public void init() {
         driver = new ChromeDriver();
+        driver.get("http://localhost/addressbook/");
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();
         groupHelper = new GroupHelper(driver);
