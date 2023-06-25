@@ -49,4 +49,79 @@ public class ContactData {
         this.group = group;
     }
 
+    public String getFirst_name() {
+        return first_name;
+    }
+
+    public String getMiddle_name() {
+        return middle_name;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getHome_telephone() {
+        return home_telephone;
+    }
+
+    public String getMobile_telephone() {
+        return mobile_telephone;
+    }
+
+    public String getWork_telephone() {
+        return work_telephone;
+    }
+
+    public String getFax_telephone() {
+        return fax_telephone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getEmail2() {
+        return email2;
+    }
+
+    public String getEmail3() {
+        return email3;
+    }
+
+    public String getHomepage() {
+        return homepage;
+    }
+
+    public String getDayOfBirthday() {
+        return dayOfBirthday;
+    }
+
+    public String getMonthOfBirthday() {
+        return monthOfBirthday;
+    }
+
+    public String getYearOfBirthday() {
+        return yearOfBirthday;
+    }
+
+    public String getGroup() {
+        return group;
+    }
 }
