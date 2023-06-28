@@ -49,30 +49,30 @@ public class ContactData {
         this.group = group;
     }
 
-    public ContactData(String first_name, String middle_name, String last_name, String nickname, String title,
-                       String company, String address, String home_telephone, String mobile_telephone,
-                       String work_telephone, String fax_telephone, String email, String email2,
-                       String email3, String homepage, String dayOfBirthday, String monthOfBirthday,
-                       String yearOfBirthday){
-        this.first_name = first_name;
-        this.middle_name = middle_name;
-        this.last_name = last_name;
-        this.nickname = nickname;
-        this.title = title;
-        this.company = company;
-        this.address = address;
-        this.home_telephone = home_telephone;
-        this.mobile_telephone = mobile_telephone;
-        this.work_telephone = work_telephone;
-        this.fax_telephone = fax_telephone;
-        this.email = email;
-        this.email2 = email2;
-        this.email3 = email3;
-        this.homepage = homepage;
-        this.dayOfBirthday = dayOfBirthday;
-        this.monthOfBirthday = monthOfBirthday;
-        this.yearOfBirthday = yearOfBirthday;
-    }
+//    public ContactData(String first_name, String middle_name, String last_name, String nickname, String title,
+//                       String company, String address, String home_telephone, String mobile_telephone,
+//                       String work_telephone, String fax_telephone, String email, String email2,
+//                       String email3, String homepage, String dayOfBirthday, String monthOfBirthday,
+//                       String yearOfBirthday){
+//        this.first_name = first_name;
+//        this.middle_name = middle_name;
+//        this.last_name = last_name;
+//        this.nickname = nickname;
+//        this.title = title;
+//        this.company = company;
+//        this.address = address;
+//        this.home_telephone = home_telephone;
+//        this.mobile_telephone = mobile_telephone;
+//        this.work_telephone = work_telephone;
+//        this.fax_telephone = fax_telephone;
+//        this.email = email;
+//        this.email2 = email2;
+//        this.email3 = email3;
+//        this.homepage = homepage;
+//        this.dayOfBirthday = dayOfBirthday;
+//        this.monthOfBirthday = monthOfBirthday;
+//        this.yearOfBirthday = yearOfBirthday;
+//    }
     public String getFirst_name() {
         return first_name;
     }

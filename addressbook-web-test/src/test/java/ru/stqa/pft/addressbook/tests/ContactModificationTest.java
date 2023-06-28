@@ -9,12 +9,12 @@ public class ContactModificationTest extends TestBase{
     public void testContactModification(){
         app.getNavigationHelper().goToHomePage();
         app.getContactHelper().initContactModification();
-        app.getContactHelper().fillInEditContactForm(
+        app.getContactHelper().fillInContactForm(
                 new ContactData("Updated First_name", "Updated Middle_Name", "Updated Last_name",
                         "Updated Nickname", "Updated Title", "Updated Company", "Updated Address",
                         "1234567788", "1234568899", "1234569900",
                         "123", "test@email.test", "test2@email.test", "test3@email.test",
-                        "Test", "12", "April", "2000"));
+                        "Test", "12", "April", "2000", null), false);
         app.getContactHelper().submitContactModification();
         app.getNavigationHelper().goToHomePage();
     }
