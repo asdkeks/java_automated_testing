@@ -47,7 +47,7 @@ public class GroupHelper extends HelperBase {
         returnToGroupPage();
     }
 
-    private void returnToGroupPage() {
+    public void returnToGroupPage() {
         click(By.linkText("group page"));
     }
 
