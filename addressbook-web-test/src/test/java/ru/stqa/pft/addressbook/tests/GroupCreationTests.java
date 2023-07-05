@@ -17,20 +17,9 @@ public class GroupCreationTests extends TestBase {
         app.getGroupHelper().createGroup(group);
         List<GroupData> after = app.getGroupHelper().getGroupList();
         Assert.assertEquals(after.size(), before.size()+1);
-
-        int max = 0;
-        for (GroupData gr: after) {
-            if (gr.getId() > max) {
-             max = gr.getId();
-            }
-        }
-        group.setId(max);
+        group.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
         before.add(group);
         Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
-//        app.getGroupHelper().initGroupCreation();
-//        app.getGroupHelper().fillInGroupForm(new GroupData("test1", null, null));
-//        app.getGroupHelper().submitGroupCreation();
-//        app.getNavigationHelper().goToGroupPage();
     }
 
 }
