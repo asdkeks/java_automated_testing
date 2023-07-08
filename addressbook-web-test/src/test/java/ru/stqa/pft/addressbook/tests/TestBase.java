@@ -1,20 +1,19 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.openqa.selenium.remote.Browser;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 
 public class TestBase {
 
-    protected final ApplicationManager app = new ApplicationManager(Browser.CHROME);
+    protected static final ApplicationManager app = new ApplicationManager(Browser.CHROME);
 
-    @BeforeTest
+    @BeforeSuite
     public void setUp() {
         app.init();
     }
 
-    @AfterTest
+    @AfterSuite
     public void tearDown() {
         app.stop();
     }
