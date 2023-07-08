@@ -91,10 +91,24 @@ public class ContactHelper extends HelperBase{
         click(By.name("update"));
     }
 
-    public void createContact(ContactData contact, Boolean isCreation) {
+    public void create(ContactData contact, Boolean isCreation) {
         initContactCreation();
         fillInContactForm(contact, isCreation);
         submitContactCreation();
+        returnToHomePage();
+    }
+
+    public void modify(int index, ContactData contact) {
+        initContactModification(index);
+        fillInContactForm(contact, false);
+        submitContactModification();
+        returnToHomePage();
+    }
+
+    public void delete(int index) {
+        selectContact(index);
+        deleteSelectedContacts();
+        confirmDeletion();
         returnToHomePage();
     }
 
@@ -106,7 +120,7 @@ public class ContactHelper extends HelperBase{
         click(By.linkText("home page"));
     }
 
-    public List<ContactData> getContactList() {
+    public List<ContactData> list() {
         List<ContactData> contacts = new ArrayList<>();
         List<WebElement> elements = driver.findElements(By.name("entry"));
         for (WebElement element: elements) {
