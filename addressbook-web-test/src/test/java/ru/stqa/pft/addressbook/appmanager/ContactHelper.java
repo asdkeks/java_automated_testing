@@ -109,7 +109,6 @@ public class ContactHelper extends HelperBase{
         selectContact(index);
         deleteSelectedContacts();
         confirmDeletion();
-        returnToHomePage();
     }
 
     public boolean isThereNoContact() {
