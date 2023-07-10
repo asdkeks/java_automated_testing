@@ -222,13 +222,15 @@ public class ContactData {
 
         ContactData that = (ContactData) o;
 
+        if (id != that.id) return false;
         if (!Objects.equals(first_name, that.first_name)) return false;
         return Objects.equals(last_name, that.last_name);
     }
 
     @Override
     public int hashCode() {
-        int result = first_name != null ? first_name.hashCode() : 0;
+        int result = id;
+        result = 31 * result + (first_name != null ? first_name.hashCode() : 0);
         result = 31 * result + (last_name != null ? last_name.hashCode() : 0);
         return result;
     }

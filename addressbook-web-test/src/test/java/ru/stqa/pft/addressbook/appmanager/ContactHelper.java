@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ContactHelper extends HelperBase{
@@ -45,26 +45,6 @@ public class ContactHelper extends HelperBase{
             }
     }
 
-    //    public void fillInEditContactForm(ContactData contactData) {
-//        type(By.name("firstname"), contactData.getFirst_name());
-//        type(By.name("middlename"), contactData.getMiddle_name());
-//        type(By.name("lastname"), contactData.getLast_name());
-//        type(By.name("nickname"), contactData.getNickname());
-//        type(By.name("title"), contactData.getTitle());
-//        type(By.name("company"), contactData.getCompany());
-//        type(By.name("address"), contactData.getAddress());
-//        type(By.name("home"), contactData.getHome_telephone());
-//        type(By.name("mobile"), contactData.getMobile_telephone());
-//        type(By.name("work"), contactData.getWork_telephone());
-//        type(By.name("fax"), contactData.getFax_telephone());
-//        type(By.name("email"), contactData.getEmail());
-//        type(By.name("email2"), contactData.getEmail2());
-//        type(By.name("email3"), contactData.getEmail3());
-//        type(By.name("homepage"), contactData.getHomepage());
-//        select(By.name("bday"), contactData.getDayOfBirthday());
-//        select(By.name("bmonth"), contactData.getMonthOfBirthday());
-//        type(By.name("byear"), contactData.getYearOfBirthday());
-//    }
     public void submitContactCreation() {
         click(By.name("submit"));
     }
@@ -73,18 +53,17 @@ public class ContactHelper extends HelperBase{
         click(By.cssSelector("[value=Delete]"));
     }
 
-    public void selectContact(int index) {
-        driver.findElements(By.name("selected[]")).get(index).click();
-        //click(By.name("selected[]"));
+
+    private void selectContactById(int id) {
+        driver.findElement(By.id(String.valueOf(id))).click();
     }
 
     public void confirmDeletion(){
         confirmAlert();
     }
 
-    public void initContactModification(int index) {
-        driver.findElements(By.cssSelector("[title=Edit]")).get(index).click();
-        //click(By.cssSelector("[title=Edit]"));
+    public void initContactModificationById(int id) {
+        driver.findElement(By.cssSelector("[href=\"edit.php?id=" + id + "\"]" )).click();
     }
 
     public void submitContactModification() {
@@ -98,18 +77,20 @@ public class ContactHelper extends HelperBase{
         returnToHomePage();
     }
 
-    public void modify(int index, ContactData contact) {
-        initContactModification(index);
+    public void modify(ContactData contact) {
+        initContactModificationById(contact.getId());
         fillInContactForm(contact, false);
         submitContactModification();
         returnToHomePage();
     }
 
-    public void delete(int index) {
-        selectContact(index);
+    public void delete(ContactData contact) {
+        selectContactById(contact.getId());
         deleteSelectedContacts();
         confirmDeletion();
     }
+
+
 
     public boolean isThereNoContact() {
         return !isElementPresent(By.name("selected[]"));
@@ -119,8 +100,8 @@ public class ContactHelper extends HelperBase{
         click(By.linkText("home page"));
     }
 
-    public List<ContactData> list() {
-        List<ContactData> contacts = new ArrayList<>();
+    public Contacts all() {
+        Contacts contacts = new Contacts();
         List<WebElement> elements = driver.findElements(By.name("entry"));
         for (WebElement element: elements) {
             String firstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
