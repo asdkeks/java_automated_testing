@@ -32,7 +32,7 @@ public class ContactHelper extends HelperBase{
                 type(By.name("fax"), contactData.getFax_telephone());
                 type(By.name("email"), contactData.getEmail());
                 type(By.name("email2"), contactData.getEmail2());
-                type(By.name("email3"), contactData.getEmail2());
+                type(By.name("email3"), contactData.getEmail3());
                 type(By.name("homepage"), contactData.getHomepage());
                 select(By.name("bday"), contactData.getDayOfBirthday());
                 select(By.name("bmonth"), contactData.getMonthOfBirthday());
