@@ -25,6 +25,7 @@ public class ContactData {
     private String monthOfBirthday;
     private String yearOfBirthday;
     private String group;
+    private String allPhones;
 
     public String getFirst_name() {
         return first_name;
@@ -233,5 +234,14 @@ public class ContactData {
         result = 31 * result + (first_name != null ? first_name.hashCode() : 0);
         result = 31 * result + (last_name != null ? last_name.hashCode() : 0);
         return result;
+    }
+
+    public String getAllPhones() {
+        return allPhones;
+    }
+
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return this;
     }
 }
