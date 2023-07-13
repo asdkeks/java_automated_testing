@@ -62,7 +62,7 @@ public class ContactHelper extends HelperBase{
         confirmAlert();
     }
 
-    public void initContactModificationById(int id) {
+    public void editPage(int id) {
         driver.findElement(By.cssSelector("[href=\"edit.php?id=" + id + "\"]" )).click();
     }
 
@@ -79,7 +79,7 @@ public class ContactHelper extends HelperBase{
     }
 
     public void modify(ContactData contact) {
-        initContactModificationById(contact.getId());
+        editPage(contact.getId());
         fillInContactForm(contact, false);
         submitContactModification();
         contactCache = null;
@@ -123,5 +123,17 @@ public class ContactHelper extends HelperBase{
             contactCache.add(contact);
         }
         return new Contacts(contactCache);
+    }
+
+    public ContactData getInfoFromEditPage(ContactData contact){
+        editPage(contact.getId());
+        String firstName = driver.findElement(By.name("firstname")).getAttribute("value");
+        String lastName = driver.findElement(By.name("lastname")).getAttribute("value");
+        String homePhone = driver.findElement(By.name("home")).getAttribute("value");
+        String MobilePhone = driver.findElement(By.name("mobile")).getAttribute("value");
+        String WorkPhone = driver.findElement(By.name("work")).getAttribute("value");
+        returnToHomePage();
+        return new ContactData().withId(contact.getId()).withFirst_name(firstName).withLast_name(lastName).
+                withHome_telephone(homePhone).withMobile_telephone(MobilePhone).withWork_telephone(WorkPhone);
     }
 }
