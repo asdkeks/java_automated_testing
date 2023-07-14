@@ -27,6 +27,41 @@ public class ContactData {
     private String group;
     private String allPhones;
     private String allEmails;
+    private String dayOfAnniversary;
+    private String monthOfAnniversary;
+    private String yearOfAnniversary;
+    private String secondAddress;
+
+    public String getDayOfAnniversary() {
+        return dayOfAnniversary;
+    }
+
+    public String getMonthOfAnniversary() {
+        return monthOfAnniversary;
+    }
+
+    public String getYearOfAnniversary() {
+        return yearOfAnniversary;
+    }
+
+
+    public String getSecondAddress() {
+        return secondAddress;
+    }
+
+
+    public String getSecondHomePhone() {
+        return secondHomePhone;
+    }
+
+
+    public String getNotes() {
+        return notes;
+    }
+
+
+    private String secondHomePhone;
+    private String notes;
 
 
     public String getFirst_name() {
@@ -227,6 +262,36 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withDayOfAnniversary(String dayOfAnniversary) {
+        this.dayOfAnniversary = dayOfAnniversary;
+        return this;
+    }
+
+    public ContactData withNotes(String notes) {
+        this.notes = notes;
+        return this;
+    }
+
+    public ContactData withSecondHomePhone(String secondHomePhone) {
+        this.secondHomePhone = secondHomePhone;
+        return this;
+    }
+
+    public ContactData withMonthOfAnniversary(String monthOfAnniversary) {
+        this.monthOfAnniversary = monthOfAnniversary;
+        return this;
+    }
+
+    public ContactData withSecondAddress(String secondAddress) {
+        this.secondAddress = secondAddress;
+        return this;
+    }
+
+    public ContactData withYearOfAnniversary(String yearOfAnniversary) {
+        this.yearOfAnniversary = yearOfAnniversary;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "ContactData{" +
@@ -255,8 +320,6 @@ public class ContactData {
         result = 31 * result + (last_name != null ? last_name.hashCode() : 0);
         return result;
     }
-
-
 
 
 }

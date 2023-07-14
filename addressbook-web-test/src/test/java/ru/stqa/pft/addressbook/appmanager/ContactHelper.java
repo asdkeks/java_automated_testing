@@ -7,6 +7,8 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -152,14 +154,25 @@ public class ContactHelper extends HelperBase{
         String dayOfBirthday = driver.findElement(By.name("bday")).
                 findElement(By.cssSelector("[selected=\"selected\"]")).getAttribute("value");
         String monthOfBirthday = driver.findElement(By.name("bmonth")).
-                findElement(By.cssSelector("[selected=\"selected\"]")).getAttribute("value");
+                findElement(By.cssSelector("[selected=\"selected\"]")).getText();
         String yearOfBirthday = driver.findElement(By.name("byear")).getAttribute("value");
+        String dayOfAnniversary = driver.findElement(By.name("aday")).
+                findElement(By.cssSelector("[selected=\"selected\"]")).getAttribute("value");
+        String monthOfAnniversary = driver.findElement(By.name("amonth")).
+                findElement(By.cssSelector("[selected=\"selected\"]")).getText();
+        String yearOfAnniversary = driver.findElement(By.name("ayear")).getAttribute("value");
+        String secondAddress = driver.findElement(By.name("address2")).getText();
+        String secondPhone = driver.findElement(By.name("phone2")).getAttribute("value");
+        String notes = driver.findElement(By.name("notes")).getText();
         return new ContactData().withId(contact.getId()).withFirst_name(firstName).withLast_name(lastName).
                 withHome_telephone(homePhone).withMobile_telephone(mobilePhone).withWork_telephone(workPhone).
                 withEmail(email).withEmail2(email2).withEmail3(email3).withAddress(address).
                 withNickname(nickname).withTitle(title).withCompany(company).withHomepage(homepage).
-                withDayOfBirthday(dayOfBirthday).withMonthOfBirthday(monthOfBirthday)
-                .withYearOfBirthday(yearOfBirthday).withFax_telephone(fax).withMiddle_name(middleName);
+                withDayOfBirthday(dayOfBirthday).withMonthOfBirthday(monthOfBirthday).
+                withYearOfBirthday(yearOfBirthday).withFax_telephone(fax).withMiddle_name(middleName).
+                withSecondAddress(secondAddress).withSecondHomePhone(secondPhone).withNotes(notes).
+                withDayOfAnniversary(dayOfAnniversary).withMonthOfAnniversary(monthOfAnniversary).
+                withYearOfAnniversary(yearOfAnniversary);
     }
 
     private void infoPage(int id) {
@@ -168,7 +181,12 @@ public class ContactHelper extends HelperBase{
     public String getDataFromInfoPage(ContactData contact) {
         infoPage(contact.getId());
         String dataFromInfoPage = driver.findElement(By.id("content")).getText();
-        return dataFromInfoPage;
+        return dataFromInfoPage.replaceAll("\\s", "").replaceAll("H:", "")
+                .replaceAll("M:", "").replaceAll("W:", "")
+                .replaceAll("F:", "").replaceAll("Homepage:", "")
+                .replaceAll("Birthday", "").replaceAll("\\.", "")
+                .replaceAll("Memberof:", "").replaceAll("(\\(..\\))", "")
+                .replaceAll("Anniversary", "").replaceAll("P:", "");
     }
 }
 

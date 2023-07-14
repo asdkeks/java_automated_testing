@@ -4,6 +4,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.equalTo;
 
@@ -30,17 +33,18 @@ public class ContactInfoPageTest extends TestBase {
         app.goTo().homePage();
         String contactDataFromInfoPage =  app.contact().getDataFromInfoPage(contact);
 
-        assertThat(contactDataFromInfoPage, equalTo(toInfoPage(contactInfoFromEditPage)));
+        assertThat(contactDataFromInfoPage, equalTo(mergeContactDataToInfoPage(contactInfoFromEditPage) + "test1"));
     }
 
-    private String toInfoPage(ContactData contact) {
-        String result = contact.getFirst_name() + " " + contact.getMiddle_name() + " " + contact.getLast_name() + "\n" +
-                contact.getNickname() + "\n" + contact.getTitle() + "\n" + contact.getCompany() + "\n" +
-                contact.getAddress() + "\n\n" + "H: " + contact.getHome_telephone() + "\n" + "M: " +
-                contact.getMobile_telephone() + "\nW: " + contact.getWork_telephone() + "\nF: " +
-                contact.getFax_telephone() + "\n\n" + "Homepage:\n" + contact.getHomepage() + "\n\n" + "Birthday " +
-                contact.getDayOfBirthday() + ". " + contact.getMonthOfBirthday() + " " + contact.getYearOfBirthday() +
-                " (23)" + "\n\nMember of: test1";
-        return result;
+    private String mergeContactDataToInfoPage(ContactData contact) {
+        return Arrays.asList(contact.getFirst_name(), contact.getMiddle_name(), contact.getLast_name(), contact.getNickname(),
+                        contact.getTitle(), contact.getCompany(), contact.getAddress(), contact.getHome_telephone(),
+                        contact.getMobile_telephone(), contact.getWork_telephone(), contact.getFax_telephone(),
+                        contact.getEmail(), contact.getEmail2(), contact.getEmail3(), contact.getHomepage(),
+                        contact.getDayOfBirthday(), contact.getMonthOfBirthday(), contact.getYearOfBirthday(),
+                        contact.getDayOfAnniversary(), contact.getMonthOfAnniversary(), contact.getYearOfAnniversary(),
+                        contact.getSecondAddress(), contact.getSecondHomePhone(), contact.getNotes())
+                .stream().filter((s) -> ! s.equals(""))
+                .collect(Collectors.joining()).replaceAll("\\s", "");
     }
 }
