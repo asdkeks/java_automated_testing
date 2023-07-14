@@ -135,16 +135,40 @@ public class ContactHelper extends HelperBase{
     public ContactData getInfoFromEditPage(ContactData contact){
         editPage(contact.getId());
         String firstName = driver.findElement(By.name("firstname")).getAttribute("value");
+        String middleName = driver.findElement(By.name("middlename")).getAttribute("value");
         String lastName = driver.findElement(By.name("lastname")).getAttribute("value");
         String homePhone = driver.findElement(By.name("home")).getAttribute("value");
         String mobilePhone = driver.findElement(By.name("mobile")).getAttribute("value");
         String workPhone = driver.findElement(By.name("work")).getAttribute("value");
+        String fax = driver.findElement(By.name("fax")).getAttribute("value");
         String email = driver.findElement(By.name("email")).getAttribute("value");
         String email2 = driver.findElement(By.name("email2")).getAttribute("value");
         String email3 = driver.findElement(By.name("email3")).getAttribute("value");
         String address = driver.findElement(By.name("address")).getText();
+        String nickname = driver.findElement(By.name("nickname")).getAttribute("value");
+        String title = driver.findElement(By.name("title")).getAttribute("value");
+        String company = driver.findElement(By.name("company")).getAttribute("value");
+        String homepage = driver.findElement(By.name("homepage")).getAttribute("value");
+        String dayOfBirthday = driver.findElement(By.name("bday")).
+                findElement(By.cssSelector("[selected=\"selected\"]")).getAttribute("value");
+        String monthOfBirthday = driver.findElement(By.name("bmonth")).
+                findElement(By.cssSelector("[selected=\"selected\"]")).getAttribute("value");
+        String yearOfBirthday = driver.findElement(By.name("byear")).getAttribute("value");
         return new ContactData().withId(contact.getId()).withFirst_name(firstName).withLast_name(lastName).
                 withHome_telephone(homePhone).withMobile_telephone(mobilePhone).withWork_telephone(workPhone).
-                withEmail(email).withEmail2(email2).withEmail3(email3).withAddress(address);
+                withEmail(email).withEmail2(email2).withEmail3(email3).withAddress(address).
+                withNickname(nickname).withTitle(title).withCompany(company).withHomepage(homepage).
+                withDayOfBirthday(dayOfBirthday).withMonthOfBirthday(monthOfBirthday)
+                .withYearOfBirthday(yearOfBirthday).withFax_telephone(fax).withMiddle_name(middleName);
+    }
+
+    private void infoPage(int id) {
+        click(By.cssSelector(String.format("[href=\"view.php?id=%s\"", id)));
+    }
+    public String getDataFromInfoPage(ContactData contact) {
+        infoPage(contact.getId());
+        String dataFromInfoPage = driver.findElement(By.id("content")).getText();
+        return dataFromInfoPage;
     }
 }
+
