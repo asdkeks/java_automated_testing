@@ -26,6 +26,8 @@ public class ContactData {
     private String yearOfBirthday;
     private String group;
     private String allPhones;
+    private String allEmails;
+
 
     public String getFirst_name() {
         return first_name;
@@ -105,6 +107,14 @@ public class ContactData {
 
     public int getId() {
         return id;
+    }
+
+    public String getAllPhones() {
+        return allPhones;
+    }
+
+    public String getAllEmails() {
+        return allEmails;
     }
 
     public ContactData withId(int id) {
@@ -207,6 +217,16 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withAllEmails(String allEmails) {
+        this.allEmails = allEmails;
+        return this;
+    }
+
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "ContactData{" +
@@ -236,12 +256,7 @@ public class ContactData {
         return result;
     }
 
-    public String getAllPhones() {
-        return allPhones;
-    }
 
-    public ContactData withAllPhones(String allPhones) {
-        this.allPhones = allPhones;
-        return this;
-    }
+
+
 }
