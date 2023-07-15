@@ -3,6 +3,7 @@
   <component name="AdditionalModuleElements">
     <content url="file://$MODULE_DIR$/../../../addressbook-web-test/src/test" dumb="true">
       <sourceFolder url="file://$MODULE_DIR$/../../../addressbook-web-test/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../addressbook-web-test/src/test/resources" type="java-test-resource" />
     </content>
   </component>
 </module>

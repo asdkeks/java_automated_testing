@@ -18,30 +18,31 @@ public class ContactHelper extends HelperBase{
     public void initContactCreation(){
         click(By.linkText("add new"));
     }
-    public void fillInContactForm(ContactData contactData, boolean creation) {
+    public void fillInContactForm(ContactData contact, boolean creation) {
             if (creation){
-                type(By.name("firstname"), contactData.getFirst_name());
-                type(By.name("middlename"), contactData.getMiddle_name());
-                type(By.name("lastname"), contactData.getLast_name());
-                type(By.name("nickname"), contactData.getNickname());
-                type(By.name("title"), contactData.getTitle());
-                type(By.name("company"), contactData.getCompany());
-                type(By.name("address"), contactData.getAddress());
-                type(By.name("home"), contactData.getHome_telephone());
-                type(By.name("mobile"), contactData.getMobile_telephone());
-                type(By.name("work"), contactData.getWork_telephone());
-                type(By.name("fax"), contactData.getFax_telephone());
-                type(By.name("email"), contactData.getEmail());
-                type(By.name("email2"), contactData.getEmail2());
-                type(By.name("email3"), contactData.getEmail3());
-                type(By.name("homepage"), contactData.getHomepage());
-                select(By.name("bday"), contactData.getDayOfBirthday());
-                select(By.name("bmonth"), contactData.getMonthOfBirthday());
-                type(By.name("byear"), contactData.getYearOfBirthday());
-                select(By.name("new_group"), contactData.getGroup());
+                type(By.name("firstname"), contact.getFirst_name());
+                type(By.name("middlename"), contact.getMiddle_name());
+                type(By.name("lastname"), contact.getLast_name());
+                type(By.name("nickname"), contact.getNickname());
+                type(By.name("title"), contact.getTitle());
+                type(By.name("company"), contact.getCompany());
+                type(By.name("address"), contact.getAddress());
+                type(By.name("home"), contact.getHome_telephone());
+                type(By.name("mobile"), contact.getMobile_telephone());
+                type(By.name("work"), contact.getWork_telephone());
+                type(By.name("fax"), contact.getFax_telephone());
+                type(By.name("email"), contact.getEmail());
+                type(By.name("email2"), contact.getEmail2());
+                type(By.name("email3"), contact.getEmail3());
+                type(By.name("homepage"), contact.getHomepage());
+                select(By.name("bday"), contact.getDayOfBirthday());
+                select(By.name("bmonth"), contact.getMonthOfBirthday());
+                type(By.name("byear"), contact.getYearOfBirthday());
+                select(By.name("new_group"), contact.getGroup());
+                attach(By.name("photo"), contact.getPhoto());
             } else {
-                type(By.name("firstname"), contactData.getFirst_name());
-                type(By.name("lastname"), contactData.getLast_name());
+                type(By.name("firstname"), contact.getFirst_name());
+                type(By.name("lastname"), contact.getLast_name());
                 Assert.assertFalse(isElementPresent(By.name("new_group")));
             }
     }

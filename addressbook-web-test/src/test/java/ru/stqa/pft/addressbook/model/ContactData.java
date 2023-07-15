@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.model;
 
 
+import java.io.File;
 import java.util.Objects;
 
 public class ContactData {
@@ -31,6 +32,7 @@ public class ContactData {
     private String monthOfAnniversary;
     private String yearOfAnniversary;
     private String secondAddress;
+    private File photo;
 
     public String getDayOfAnniversary() {
         return dayOfAnniversary;
@@ -150,6 +152,10 @@ public class ContactData {
 
     public String getAllEmails() {
         return allEmails;
+    }
+
+    public File getPhoto() {
+        return photo;
     }
 
     public ContactData withId(int id) {
@@ -292,6 +298,11 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withPhoto(File photo) {
+        this.photo = photo;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "ContactData{" +
@@ -320,6 +331,7 @@ public class ContactData {
         result = 31 * result + (last_name != null ? last_name.hashCode() : 0);
         return result;
     }
+
 
 
 }

@@ -3,6 +3,8 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.File;
+
 public class HelperBase {
     protected WebDriver driver;
     protected Select select;
@@ -22,6 +24,12 @@ public class HelperBase {
                 driver.findElement(locator).clear();
                 driver.findElement(locator).sendKeys(text);
             }
+        }
+    }
+
+    protected void attach(By locator, File photo) {
+        if (photo != null) {
+                driver.findElement(locator).sendKeys(photo.getAbsolutePath());
         }
     }
 
