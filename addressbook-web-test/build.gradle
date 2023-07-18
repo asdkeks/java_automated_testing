@@ -1,7 +1,19 @@
 apply plugin: 'java'
 
+tasks.register('testGroup', Test) {
+    useTestNG {
+        suites 'src/test/resources/testng-groups.xml'
+    }
+}
+
+tasks.register('testContact', Test) {
+    useTestNG {
+        suites 'src/test/resources/testng-contacts.xml'
+    }
+}
+
 test {
-   useTestNG ()
+    useTestNG();
 }
 
 repositories {
