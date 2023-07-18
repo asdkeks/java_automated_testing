@@ -7,11 +7,17 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.Browser;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 public class ApplicationManager {
-    private final Browser browser;
+    private final Properties properties;
+    private String browser;
     WebDriver driver;
 
     private NavigationHelper navigationHelper;
@@ -21,28 +27,31 @@ public class ApplicationManager {
     JavascriptExecutor js;
     private Map<String, Object> vars;
 
-    public ApplicationManager(Browser browser) {
+    public ApplicationManager(String browser) {
         this.browser = browser;
+        properties = new Properties();
     }
 
-    public void init() {
+    public void init() throws IOException {
+        String target = System.getProperty("target", "local");
+        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
         //Browser browser = Browser.CHROME;
-        if (browser == Browser.CHROME) {
+        if (browser.equals(Browser.CHROME.browserName())) {
             driver = new ChromeDriver();
-        } else if (browser == Browser.FIREFOX) {
+        } else if (browser.equals(Browser.FIREFOX.browserName())) {
             driver = new FirefoxDriver();
-        } else if (browser == Browser.IE){
+        } else if (browser.equals(Browser.IE.browserName())){
             driver = new InternetExplorerDriver();
         }
         //driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        driver.get("http://localhost/addressbook/");
+        driver.get(properties.getProperty("web.baseUrl"));
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();
         groupHelper = new GroupHelper(driver);
         navigationHelper = new NavigationHelper(driver);
         sessionHelper = new SessionHelper(driver);
         contactHelper = new ContactHelper(driver);
-        sessionHelper.logIn("admin", "secret");
+        sessionHelper.logIn(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
     }
 
 

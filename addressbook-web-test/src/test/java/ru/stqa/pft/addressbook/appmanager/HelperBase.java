@@ -1,9 +1,13 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class HelperBase {
     protected WebDriver driver;
@@ -60,5 +64,13 @@ public class HelperBase {
         } catch (NoSuchElementException ex) {
             return false;
         }
+    }
+
+    public void wait(int sec){
+        new WebDriverWait(driver, Duration.ofSeconds(sec));
+    }
+
+    public void refresh(){
+        driver.navigate().refresh();
     }
 }

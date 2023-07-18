@@ -197,5 +197,13 @@ public class ContactHelper extends HelperBase{
                 .replaceAll("Memberof:", "").replaceAll("(\\(..\\))", "")
                 .replaceAll("Anniversary", "").replaceAll("P:", "");
     }
+
+    public void waitDeletion(int sec){
+        wait(sec);
+    }
+
+    public void refreshHomePage() {
+        refresh();
+    }
 }
 

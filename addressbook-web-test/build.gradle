@@ -10,6 +10,9 @@ tasks.register('testContact', Test) {
     useTestNG {
         suites 'src/test/resources/testng-contacts.xml'
     }
+    if (project.hasProperty('browser')) {
+    systemProperty 'browser', "${browser}"
+    }
 }
 
 test {
