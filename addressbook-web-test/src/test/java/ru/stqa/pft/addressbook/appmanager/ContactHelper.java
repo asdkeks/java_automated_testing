@@ -155,10 +155,20 @@ public class ContactHelper extends HelperBase{
         String monthOfBirthday = driver.findElement(By.name("bmonth")).
                 findElement(By.cssSelector("[selected=\"selected\"]")).getText();
         String yearOfBirthday = driver.findElement(By.name("byear")).getAttribute("value");
-        String dayOfAnniversary = driver.findElement(By.name("aday")).
-                findElement(By.cssSelector("[selected=\"selected\"]")).getAttribute("value");
-        String monthOfAnniversary = driver.findElement(By.name("amonth")).
-                findElement(By.cssSelector("[selected=\"selected\"]")).getText();
+        String dayOfAnniversary;
+        if (! driver.findElement(By.name("aday")).
+                findElement(By.cssSelector("[selected=\"selected\"]")).getAttribute("value").equals("0")) {
+            dayOfAnniversary = driver.findElement(By.name("ayear")).getAttribute("value");
+        } else {
+            dayOfAnniversary = "";
+        }
+        String monthOfAnniversary ;
+        if (! driver.findElement(By.name("amonth")).
+                findElement(By.cssSelector("[selected=\"selected\"]")).getText().equals("-")) {
+            monthOfAnniversary = driver.findElement(By.name("ayear")).getAttribute("value");
+        } else {
+            monthOfAnniversary = "";
+        }
         String yearOfAnniversary = driver.findElement(By.name("ayear")).getAttribute("value");
         String secondAddress = driver.findElement(By.name("address2")).getText();
         String secondPhone = driver.findElement(By.name("phone2")).getAttribute("value");
@@ -180,10 +190,10 @@ public class ContactHelper extends HelperBase{
     public String getDataFromInfoPage(ContactData contact) {
         infoPage(contact.getId());
         String dataFromInfoPage = driver.findElement(By.id("content")).getText();
-        return dataFromInfoPage.replaceAll("\\s", "").replaceAll("H:", "")
-                .replaceAll("M:", "").replaceAll("W:", "")
-                .replaceAll("F:", "").replaceAll("Homepage:", "")
-                .replaceAll("Birthday", "").replaceAll("\\.", "")
+        return dataFromInfoPage.replaceAll("\\. ", "").replaceAll("\\s", "")
+                .replaceAll("H:", "").replaceAll("M:", "")
+                .replaceAll("W:", "").replaceAll("F:", "")
+                .replaceAll("Homepage:", "").replaceAll("Birthday", "")
                 .replaceAll("Memberof:", "").replaceAll("(\\(..\\))", "")
                 .replaceAll("Anniversary", "").replaceAll("P:", "");
     }
