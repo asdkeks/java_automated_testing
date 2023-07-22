@@ -2,67 +2,120 @@ package ru.stqa.pft.addressbook.model;
 
 
 import com.google.gson.annotations.Expose;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 import java.util.Objects;
 
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
 
     @XStreamOmitField
+    @Id
+    @Column(name = "id")
     private int id = Integer.MAX_VALUE;
     @Expose
+    @Column(name = "firstname")
     private String first_name;
     @Expose
+    @Column(name = "middlename")
     private String middle_name;
     @Expose
+    @Column(name = "lastname")
     private String last_name;
     @Expose
+    @Column(name = "nickname")
     private String nickname;
     @Expose
+    @Column(name = "title")
     private String title;
     @Expose
+    @Column(name = "company")
     private String company;
     @Expose
+    @Column(name = "address")
+    @Type(type = "text")
     private String address;
     @Expose
+    @Column(name = "home")
+    @Type(type = "text")
     private String home_telephone;
     @Expose
+    @Column(name = "mobile")
+    @Type(type = "text")
     private String mobile_telephone;
     @Expose
+    @Column(name = "work")
+    @Type(type = "text")
     private String work_telephone;
     @Expose
+    @Column(name = "fax")
+    @Type(type = "text")
     private String fax_telephone;
     @Expose
+    @Column(name = "email")
+    @Type(type = "text")
     private String email;
     @Expose
+    @Column(name = "email2")
+    @Type(type = "text")
     private String email2;
     @Expose
+    @Column(name = "email3")
+    @Type(type = "text")
     private String email3;
     @Expose
+    @Column(name = "homepage")
+    @Type(type = "text")
     private String homepage;
     @Expose
+    @Transient
     private String dayOfBirthday;
     @Expose
+    @Transient
     private String monthOfBirthday;
     @Expose
+    @Transient
     private String yearOfBirthday;
     @Expose
+    @Transient
     private String group;
     @Expose
+    @Transient
     private String allPhones;
     @Expose
+    @Transient
     private String allEmails;
     @Expose
+    @Transient
     private String dayOfAnniversary;
     @Expose
+    @Transient
     private String monthOfAnniversary;
     @Expose
+    @Transient
     private String yearOfAnniversary;
     @Expose
+    @Column(name = "address2")
+    @Type(type = "text")
     private String secondAddress;
     @Expose
-    private File photo;
+    @Column(name = "photo")
+    @Type(type = "text")
+    private String photo;
+
+    @Expose
+    @Column(name = "phone2")
+    @Type(type = "text")
+    private String secondHomePhone;
+    @Expose
+    @Column(name = "notes")
+    @Type(type = "text")
+    private String notes;
 
     public String getDayOfAnniversary() {
         return dayOfAnniversary;
@@ -90,11 +143,6 @@ public class ContactData {
     public String getNotes() {
         return notes;
     }
-
-
-    private String secondHomePhone;
-    private String notes;
-
 
     public String getFirst_name() {
         return first_name;
@@ -185,7 +233,7 @@ public class ContactData {
     }
 
     public File getPhoto() {
-        return photo;
+        return new File(photo);
     }
 
     public ContactData withId(int id) {
@@ -329,7 +377,7 @@ public class ContactData {
     }
 
     public ContactData withPhoto(File photo) {
-        this.photo = photo;
+        this.photo = photo.getPath();
         return this;
     }
 
