@@ -23,6 +23,7 @@ public class ApplicationManager {
     private GroupHelper groupHelper;
     private SessionHelper sessionHelper;
     private ContactHelper contactHelper;
+    private DBHelper dbHelper;
     JavascriptExecutor js;
     private Map<String, Object> vars;
 
@@ -35,6 +36,7 @@ public class ApplicationManager {
         String target = System.getProperty("target", "local");
         properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
         //Browser browser = Browser.CHROME;
+        dbHelper = new DBHelper();
         if (browser.equals(Browser.CHROME.browserName())) {
             driver = new ChromeDriver();
         } else if (browser.equals(Browser.FIREFOX.browserName())) {
@@ -69,4 +71,10 @@ public class ApplicationManager {
     public ContactHelper contact(){
         return contactHelper;
     }
+
+    public DBHelper db() {
+        return dbHelper;
+    }
+
+
 }
