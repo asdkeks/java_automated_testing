@@ -77,8 +77,7 @@ public class ContactDataGenerator {
                         contact.getTitle(), contact.getCompany(), contact.getAddress(), contact.getHome_telephone(),
                         contact.getMobile_telephone(), contact.getWork_telephone(), contact.getFax_telephone(),
                         contact.getEmail(), contact.getEmail2(), contact.getEmail3(), contact.getHomepage(),
-                        contact.getDayOfBirthday(), contact.getMonthOfBirthday(), contact.getYearOfBirthday(),
-                        contact.getGroup()));
+                        contact.getDayOfBirthday(), contact.getMonthOfBirthday(), contact.getYearOfBirthday()));
             }
         }
     }
@@ -94,7 +93,7 @@ public class ContactDataGenerator {
                     .withHome_telephone("1234567788").withMobile_telephone("1234568899").withWork_telephone("1234569900")
                     .withFax_telephone("123").withEmail("test@email.test").withEmail2("test2@email.test")
                     .withEmail3("test3@email.test").withHomepage("Test").withDayOfBirthday("12")
-                    .withMonthOfBirthday("April").withYearOfBirthday("2000").withGroup("test1"));
+                    .withMonthOfBirthday("April").withYearOfBirthday("2000"));
         }
         return contacts;
     }

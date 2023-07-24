@@ -38,7 +38,7 @@ public class ContactHelper extends HelperBase{
                 select(By.name("bday"), contact.getDayOfBirthday());
                 select(By.name("bmonth"), contact.getMonthOfBirthday());
                 type(By.name("byear"), contact.getYearOfBirthday());
-                select(By.name("new_group"), contact.getGroup());
+                select(By.name("new_group"), contact.getGroups().iterator().next().getName());
                 attach(By.name("photo"), contact.getPhoto());
             } else {
                 type(By.name("firstname"), contact.getFirst_name());
