@@ -42,4 +42,12 @@ public class DBHelper {
         session.close();
         return new Contacts(result);
     }
+
+    public boolean isThereNoContactInGroup() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.getTransaction().commit();
+        session.close();
+        return session.createQuery( "from ContactData WHERE deprecated = '0000-00-00'" ).list().isEmpty();
+    }
 }

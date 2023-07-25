@@ -3,10 +3,14 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,10 +39,10 @@ public class ContactHelper extends HelperBase{
                 type(By.name("email2"), contact.getEmail2());
                 type(By.name("email3"), contact.getEmail3());
                 type(By.name("homepage"), contact.getHomepage());
-                select(By.name("bday"), contact.getDayOfBirthday());
-                select(By.name("bmonth"), contact.getMonthOfBirthday());
+                selectByText(By.name("bday"), contact.getDayOfBirthday());
+                selectByText(By.name("bmonth"), contact.getMonthOfBirthday());
                 type(By.name("byear"), contact.getYearOfBirthday());
-                select(By.name("new_group"), contact.getGroups().iterator().next().getName());
+                selectByText(By.name("new_group"), contact.getGroups().iterator().next().getName());
                 attach(By.name("photo"), contact.getPhoto());
             } else {
                 type(By.name("firstname"), contact.getFirst_name());
@@ -198,12 +202,26 @@ public class ContactHelper extends HelperBase{
                 .replaceAll("Anniversary", "").replaceAll("P:", "");
     }
 
-    public void waitDeletion(int sec){
+    public void waitContact(int sec){
         wait(sec);
     }
 
     public void refreshHomePage() {
         refresh();
+    }
+
+    public void addInGroup(ContactData contact, GroupData group) {
+        selectContactById(contact.getId());
+        selectByValue(By.name("to_group"), String.valueOf(group.getId()));
+        click(By.name("add"));
+    }
+
+    public void deleteFromGroup(ContactData contact, GroupData group) {
+        selectByValue(By.name("group"), String.valueOf(group.getId()));
+        WebElement wait = new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.id(String.valueOf(contact.getId()))));
+        selectContactById(contact.getId());
+        click(By.name("remove"));
     }
 }
 

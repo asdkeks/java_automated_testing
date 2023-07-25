@@ -35,9 +35,14 @@ public class HelperBase {
         }
     }
 
-    protected void select(By locator, String text) {
+    protected void selectByText(By locator, String text) {
         select = new Select(driver.findElement(locator));
         select.selectByVisibleText(text);
+    }
+
+    protected void selectByValue(By locator, String value) {
+        select = new Select(driver.findElement(locator));
+        select.selectByValue(value);
     }
 
     public void confirmAlert(){
