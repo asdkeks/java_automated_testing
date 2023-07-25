@@ -24,6 +24,12 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactCreationTests extends TestBase{
 
+    @BeforeMethod
+    public void ensurePreconditions(){
+        if (app.db().groups().size() == 0) {
+            app.group().create(new GroupData().withName("ADD").withHeader("IN").withFooter("ME"));
+        }
+    }
     @DataProvider
     public Iterator<Object[]> validGroupsFromJson() throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.json")))) {
@@ -83,13 +89,6 @@ public class ContactCreationTests extends TestBase{
         Groups groups = app.db().groups();
         Contacts before = app.db().contacts();
         File photo = new File("./src/test/resources/test.png");
-//        ContactData contact = new ContactData().withFirst_name("Test First_name").withMiddle_name("Test Middle_Name")
-//                .withLast_name("Test Last_name").withNickname("Test Nickname").withTitle("Test Title")
-//                .withCompany("Test Company").withAddress("Test Address").withHome_telephone("1234567788")
-//                .withMobile_telephone("1234568899").withWork_telephone("1234569900").withFax_telephone("123")
-//                .withEmail("test@email.test").withEmail2("test2@email.test").withEmail3("test3@email.test")
-//                .withHomepage("Test").withDayOfBirthday("12").withMonthOfBirthday("April").withYearOfBirthday("2000")
-//                .withGroup("test1").withPhoto(photo);
         app.contact().create(contact.withPhoto(photo).inGroup(groups.iterator().next()), true);
         assertThat(app.contact().count(), equalTo(before.size()+1));
         Contacts after = app.db().contacts();

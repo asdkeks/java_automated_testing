@@ -22,7 +22,7 @@ public class ContactPhoneTest extends TestBase{
                     .withMobile_telephone("1234568899").withWork_telephone("1234569900").withFax_telephone("123")
                     .withEmail("test@email.test").withEmail2("test2@email.test").withEmail3("test3@email.test")
                     .withHomepage("Test").withDayOfBirthday("12").withMonthOfBirthday("April").withYearOfBirthday("2000")
-                    .withGroup("test1"), true);
+                    , true);
         }
     }
     @Test
