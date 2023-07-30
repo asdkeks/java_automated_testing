@@ -1,5 +1,6 @@
 package ru.stqa.pft.mantis.appmanager;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,7 +11,6 @@ import org.openqa.selenium.remote.Browser;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -25,6 +25,11 @@ public class ApplicationManager {
     private RegistrationHelper registrationHelper;
     private FTPHelper ftp;
     private MailHelper mail;
+
+    private NavigationHelper goTo;
+    private DBHelper db;
+    private SessionHelper session;
+    private UserConfigHelper userConfig;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -74,6 +79,34 @@ public class ApplicationManager {
         return mail;
     }
 
+    public NavigationHelper goTo() {
+        if (goTo == null) {
+            goTo = new NavigationHelper(this);
+        }
+        return goTo;
+    }
+
+    public DBHelper db() {
+        if (db == null) {
+            db = new DBHelper();
+        }
+        return db;
+    }
+
+    public SessionHelper session() {
+        if (session == null) {
+            session = new SessionHelper(this);
+        }
+        return session;
+    }
+
+    public UserConfigHelper userConfig() {
+        if (userConfig == null) {
+            userConfig = new UserConfigHelper(this);
+        }
+        return userConfig;
+    }
+
     public WebDriver getDriver() {
         if (driver == null) {
             if (browser.equals(Browser.CHROME.browserName())) {
@@ -83,8 +116,9 @@ public class ApplicationManager {
             } else if (browser.equals(Browser.IE.browserName())){
                 driver = new InternetExplorerDriver();
             }
-            driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
             driver.get(properties.getProperty("web.baseUrl"));
+            driver.manage().window().setSize(new Dimension(1920, 1080));
         }
         return driver;
     }

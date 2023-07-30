@@ -78,4 +78,8 @@ public class HelperBase {
     public void refresh(){
         driver.navigate().refresh();
     }
+
+    public void open(String page) {
+        driver.get(app.getProperty("web.baseUrl") + page);
+    }
 }

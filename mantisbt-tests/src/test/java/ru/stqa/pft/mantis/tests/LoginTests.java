@@ -11,7 +11,7 @@ public class LoginTests extends TestBase{
     @Test
     public void testLogin() throws IOException {
         HTTPHelper session = app.newSession();
-        assertTrue(session.login("administrator", "root"));
+        assertTrue(session.login("administrator", "administrator"));
         assertTrue(session.isLoggedInAs("administrator"));
     }
 }
