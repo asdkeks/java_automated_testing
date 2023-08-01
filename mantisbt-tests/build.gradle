@@ -33,4 +33,5 @@ dependencies {
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.5' // не обновлять. Последняя версия для J8
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.33'
     implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.6.15.Final' // не обновлять. Последняя версия для J8
+    implementation group: 'biz.futureware.mantis', name: 'mantis-axis-soap-client', version: '1.2.19'
 }

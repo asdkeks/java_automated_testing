@@ -30,6 +30,7 @@ public class ApplicationManager {
     private DBHelper db;
     private SessionHelper session;
     private UserConfigHelper userConfig;
+    private SOAPHelper soapHelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -105,6 +106,13 @@ public class ApplicationManager {
             userConfig = new UserConfigHelper(this);
         }
         return userConfig;
+    }
+
+    public SOAPHelper soap() {
+        if (soapHelper == null){
+            soapHelper = new SOAPHelper(this);
+        }
+        return soapHelper;
     }
 
     public WebDriver getDriver() {
