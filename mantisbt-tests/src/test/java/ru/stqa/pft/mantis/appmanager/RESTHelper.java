@@ -1,9 +1,7 @@
 package ru.stqa.pft.mantis.appmanager;
 
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -38,6 +36,23 @@ public class RESTHelper{
         JsonElement parsed = JsonParser.parseString(json);
         JsonElement issues = parsed.getAsJsonObject().get("issues");
         return new Gson().fromJson(issues, new TypeToken<Set<Issue>>(){}.getType());
+    }
+
+    public int getIssueStatus(int id) throws IOException {
+        HttpGet get = new HttpGet(String.format(app.getProperty("web.baseUrl") +
+                "/api/rest/issues/%s", id));
+        get.addHeader("Authorization", app.getProperty("rest.token"));
+        CloseableHttpResponse response = httpClient.execute(get);
+        String json = getTextFrom(response);
+        JsonElement parsed = JsonParser.parseString(json);
+        int issueStatus = parsed
+                .getAsJsonObject()
+                .getAsJsonArray("issues")
+                .get(0)
+                .getAsJsonObject()
+                .getAsJsonObject("status")
+                .get("id").getAsInt();
+        return issueStatus;
     }
 
 

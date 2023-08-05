@@ -16,7 +16,8 @@ import static org.testng.Assert.assertTrue;
 public class PasswordChangeTests extends TestBase{
 
     @BeforeMethod
-    public void startMailServer() {
+    public void startMailServer() throws IOException {
+        skipIfNotFixed(15);
         app.mail().start();
     }
 

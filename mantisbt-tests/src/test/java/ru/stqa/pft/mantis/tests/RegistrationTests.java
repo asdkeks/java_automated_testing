@@ -13,7 +13,8 @@ import static org.testng.Assert.assertTrue;
 
 public class RegistrationTests extends TestBase{
     @BeforeMethod
-    public void startMailServer() {
+    public void startMailServer() throws IOException {
+        skipIfNotFixed(13);
         app.mail().start();
     }
     @Test
