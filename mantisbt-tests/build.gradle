@@ -27,6 +27,7 @@ dependencies {
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.10.0'
     implementation group: 'org.hamcrest', name: 'java-hamcrest', version: '2.0.0.0'
     implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.14'
+    implementation group: 'org.apache.httpcomponents', name: 'fluent-hc', version: '4.5.14'
     implementation group: 'commons-net', name: 'commons-net', version: '3.9.0'
     implementation group: 'org.subethamail', name: 'subethasmtp', version: '3.1.7'
     implementation group: 'ru.lanwen.verbalregex', name: 'java-verbal-expressions', version: '1.8'
@@ -34,4 +35,6 @@ dependencies {
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.33'
     implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.6.15.Final' // не обновлять. Последняя версия для J8
     implementation group: 'biz.futureware.mantis', name: 'mantis-axis-soap-client', version: '1.2.19'
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.10.1'
+
 }

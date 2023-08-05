@@ -31,6 +31,7 @@ public class ApplicationManager {
     private SessionHelper session;
     private UserConfigHelper userConfig;
     private SOAPHelper soapHelper;
+    private RESTHelper restHelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -113,6 +114,13 @@ public class ApplicationManager {
             soapHelper = new SOAPHelper(this);
         }
         return soapHelper;
+    }
+
+    public RESTHelper rest() {
+        if (restHelper == null){
+            restHelper = new RESTHelper(this);
+        }
+        return restHelper;
     }
 
     public WebDriver getDriver() {

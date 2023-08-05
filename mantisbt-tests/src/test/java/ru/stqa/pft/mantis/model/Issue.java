@@ -1,5 +1,7 @@
 package ru.stqa.pft.mantis.model;
 
+import java.util.Objects;
+
 public class Issue {
     private int id;
     private String summary;
@@ -9,6 +11,7 @@ public class Issue {
     public int getId() {
         return id;
     }
+
 
     public Issue withId(int id) {
         this.id = id;
@@ -40,5 +43,37 @@ public class Issue {
     public Issue withProject(Project project) {
         this.project = project;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Issue issue = (Issue) o;
+
+        if (id != issue.id) return false;
+        if (!Objects.equals(summary, issue.summary)) return false;
+        if (!Objects.equals(description, issue.description)) return false;
+        return Objects.equals(project, issue.project);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (summary != null ? summary.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (project != null ? project.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Issue{" +
+                "id=" + id +
+                ", summary='" + summary + '\'' +
+                ", description='" + description + '\'' +
+                ", project=" + project +
+                '}';
     }
 }
