@@ -1,9 +1,13 @@
 package ru.stqa.pft.mantis.model;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.Objects;
 
 public class Project {
+    @Expose
     private int id;
+    @Expose
     private String name;
 
     public int getId() {

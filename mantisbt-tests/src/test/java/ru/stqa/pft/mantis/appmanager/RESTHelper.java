@@ -35,7 +35,8 @@ public class RESTHelper{
         String json = getTextFrom(response);
         JsonElement parsed = JsonParser.parseString(json);
         JsonElement issues = parsed.getAsJsonObject().get("issues");
-        return new Gson().fromJson(issues, new TypeToken<Set<Issue>>(){}.getType());
+        return new GsonBuilder().excludeFieldsWithoutExposeAnnotation()
+                .create().fromJson(issues, new TypeToken<Set<Issue>>(){}.getType());
     }
 
     public int getIssueStatus(int id) throws IOException {
