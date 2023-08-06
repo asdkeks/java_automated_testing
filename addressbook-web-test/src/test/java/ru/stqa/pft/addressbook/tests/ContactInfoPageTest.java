@@ -3,8 +3,12 @@ package ru.stqa.pft.addressbook.tests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -30,10 +34,20 @@ public class ContactInfoPageTest extends TestBase {
     public void testContactInfoPage(){
         ContactData contact = app.db().contacts().iterator().next();
         ContactData contactInfoFromEditPage = app.contact().getInfoFromEditPage(contact);
+        Groups contactsGroups = contact.getGroups();
+        String groups = getStringFromGroups(contactsGroups);
         app.goTo().homePage();
         String contactDataFromInfoPage =  app.contact().getDataFromInfoPage(contact);
+        assertThat(mergeContactDataToInfoPage(contactInfoFromEditPage) + groups, equalTo(contactDataFromInfoPage));
+    }
 
-        assertThat(mergeContactDataToInfoPage(contactInfoFromEditPage), equalTo(contactDataFromInfoPage));
+    private String getStringFromGroups(Groups contactsGroups) {
+        List<String> groupNames = new ArrayList<>();
+        for (GroupData group : contactsGroups) {
+            groupNames.add(group.getName());
+        }
+        return groupNames.stream().filter((s) -> !s.equals(""))
+                .collect(Collectors.joining()).replaceAll("\\s", "");
     }
 
     private String mergeContactDataToInfoPage(ContactData contact) {
