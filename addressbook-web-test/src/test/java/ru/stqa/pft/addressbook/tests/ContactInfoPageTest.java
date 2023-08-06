@@ -33,7 +33,7 @@ public class ContactInfoPageTest extends TestBase {
         app.goTo().homePage();
         String contactDataFromInfoPage =  app.contact().getDataFromInfoPage(contact);
 
-        assertThat(contactDataFromInfoPage, equalTo(mergeContactDataToInfoPage(contactInfoFromEditPage)));
+        assertThat(mergeContactDataToInfoPage(contactInfoFromEditPage), equalTo(contactDataFromInfoPage));
     }
 
     private String mergeContactDataToInfoPage(ContactData contact) {
