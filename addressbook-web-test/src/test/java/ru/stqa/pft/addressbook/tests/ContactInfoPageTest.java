@@ -35,13 +35,13 @@ public class ContactInfoPageTest extends TestBase {
         ContactData contact = app.db().contacts().iterator().next();
         ContactData contactInfoFromEditPage = app.contact().getInfoFromEditPage(contact);
         Groups contactsGroups = contact.getGroups();
-        String groups = getStringFromGroups(contactsGroups);
+        String groups = getGroupsName(contactsGroups);
         app.goTo().homePage();
         String contactDataFromInfoPage =  app.contact().getDataFromInfoPage(contact);
         assertThat(mergeContactDataToInfoPage(contactInfoFromEditPage) + groups, equalTo(contactDataFromInfoPage));
     }
 
-    private String getStringFromGroups(Groups contactsGroups) {
+    private String getGroupsName(Groups contactsGroups) {
         List<String> groupNames = new ArrayList<>();
         for (GroupData group : contactsGroups) {
             groupNames.add(group.getName());
