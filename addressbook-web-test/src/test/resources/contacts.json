@@ -1,0 +1,22 @@
+[
+  {
+    "first_name": "First_name 2023-07-24, 0",
+    "middle_name": "Middle_Name 0",
+    "last_name": "Last_Name 0",
+    "nickname": "Nickname 0",
+    "title": "Title 0",
+    "company": "Company 0",
+    "address": "Address 0",
+    "home_telephone": "1234567788",
+    "mobile_telephone": "1234568899",
+    "work_telephone": "1234569900",
+    "fax_telephone": "123",
+    "email": "test@email.test",
+    "email2": "test2@email.test",
+    "email3": "test3@email.test",
+    "homepage": "Test",
+    "dayOfBirthday": "12",
+    "monthOfBirthday": "April",
+    "yearOfBirthday": "2000"
+  }
+]
