@@ -30,7 +30,7 @@ public class ContactInfoPageTest extends TestBase {
         }
     }
 
-    @Test(enabled = false)
+    @Test
     public void testContactInfoPage(){
         ContactData contact = app.db().contacts().iterator().next();
         ContactData contactInfoFromEditPage = app.contact().getInfoFromEditPage(contact);

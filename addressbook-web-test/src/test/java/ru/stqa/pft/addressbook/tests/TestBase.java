@@ -4,6 +4,7 @@ import org.openqa.selenium.remote.Browser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.testng.ITestContext;
 import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 import ru.stqa.pft.addressbook.model.GroupData;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+@Listeners(TestListener.class)
 public class TestBase {
     Logger logger = LoggerFactory.getLogger(GroupCreationTests.class);
 
@@ -24,8 +26,10 @@ public class TestBase {
             new ApplicationManager(System.getProperty("browser", Browser.CHROME.browserName()));
 
     @BeforeSuite
-    public void setUp() throws IOException {
+    public void setUp(ITestContext context) throws IOException {
         app.init();
+        context.setAttribute("app", app);
+
     }
 
     @AfterSuite
