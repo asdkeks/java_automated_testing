@@ -12,10 +12,8 @@ public class LongestSubstringWithoutRepeatingCharactersSolution {
                 if (!charStack.contains(s.charAt(j))) {
                     charStack.push(s.charAt(j));
                     subresult++;
-                } else {
-                    subresult = charStack.size();
-                    break;
-                }
+                } else break;
+
             }
             result = Math.max(subresult, result);
             subresult = 0;
