@@ -24,9 +24,12 @@ public class MainClass {
 //        ListNode l2 = new ListNode(5, new ListNode(6, new ListNode(4,null)));
 //        AddTwoNumbersSolution.addTwoNumbers(l1,l2);
 
-        String haystack = "sadbutsad";
-        String needle = "sad";
-        FindTheIndexOfTheFirstOccurrenceInAStringSolution.strStr(haystack, needle);
+//        String haystack = "sadbutsad";
+//        String needle = "sad";
+//        FindTheIndexOfTheFirstOccurrenceInAStringSolution.strStr(haystack, needle);
+
+        String s = "abcabcbb";
+        LongestSubstringWithoutRepeatingCharactersSolution.lengthOfLongestSubstring(s);
     }
 
 }
