@@ -28,8 +28,12 @@ public class MainClass {
 //        String needle = "sad";
 //        FindTheIndexOfTheFirstOccurrenceInAStringSolution.strStr(haystack, needle);
 
-        String s = "abcabcbb";
-        LongestSubstringWithoutRepeatingCharactersSolution.lengthOfLongestSubstring(s);
+//        String s = "abcabcbb";
+//        LongestSubstringWithoutRepeatingCharactersSolution.lengthOfLongestSubstring(s);
+
+        int[] nums1 = new int[]{1,2};
+        int[] nums2 = new int[]{3,4};
+        MedianOfTwoSortedArraysSolution.findMedianSortedArrays(nums1, nums2);
     }
 
 }
