@@ -31,9 +31,19 @@ public class MainClass {
 //        String s = "abcabcbb";
 //        LongestSubstringWithoutRepeatingCharactersSolution.lengthOfLongestSubstring(s);
 
-        int[] nums1 = new int[]{1,2};
-        int[] nums2 = new int[]{3,4};
-        MedianOfTwoSortedArraysSolution.findMedianSortedArrays(nums1, nums2);
+//        int[] nums1 = new int[]{1,2};
+//        int[] nums2 = new int[]{3,4};
+//        MedianOfTwoSortedArraysSolution.findMedianSortedArrays(nums1, nums2);
+
+//        String s = "21474836460";
+//        StringToIntegerSolution.myAtoi(s);
+//
+//        int d1 = -2147483648;
+//        int d2 = -1;
+//        DivideTwoIntegersSolution.divide(d1, d2);
+
+        int num = 3009;
+        IntegerToRomanSolution.intToRoman(num);
     }
 
 }
