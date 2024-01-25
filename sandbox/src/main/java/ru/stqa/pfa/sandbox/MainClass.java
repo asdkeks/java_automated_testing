@@ -42,8 +42,17 @@ public class MainClass {
 //        int d2 = -1;
 //        DivideTwoIntegersSolution.divide(d1, d2);
 
-        int num = 3009;
-        IntegerToRomanSolution.intToRoman(num);
+//        int num = 3009;
+//        IntegerToRomanSolution.intToRoman(num);
+
+//        int[] height = new int[]{2,3,4,5,18,17,6};
+//        ContainerWithMostWaterSolution.maxArea(height);
+
+//        String s = "ab";
+//        String p = ".*";
+//        RegularExpressionMatchingSolution.isMatch(s,p);
+        ListNode l1 = new ListNode(1, new ListNode(1, new ListNode(2)));
+        RemoveDuplicatesFromSortedListSolution.deleteDuplicates(l1);
     }
 
 }
