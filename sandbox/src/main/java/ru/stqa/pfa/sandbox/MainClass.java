@@ -51,8 +51,11 @@ public class MainClass {
 //        String s = "ab";
 //        String p = ".*";
 //        RegularExpressionMatchingSolution.isMatch(s,p);
-        ListNode l1 = new ListNode(1, new ListNode(1, new ListNode(2)));
-        RemoveDuplicatesFromSortedListSolution.deleteDuplicates(l1);
+//        ListNode l1 = new ListNode(1, new ListNode(1, new ListNode(2)));
+//        RemoveDuplicatesFromSortedListSolution.deleteDuplicates(l1);
+
+        int n = 44;
+        ClimbingStairsSolution.climbStairs(n);
     }
 
 }
