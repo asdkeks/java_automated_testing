@@ -54,8 +54,11 @@ public class MainClass {
 //        ListNode l1 = new ListNode(1, new ListNode(1, new ListNode(2)));
 //        RemoveDuplicatesFromSortedListSolution.deleteDuplicates(l1);
 
-        int n = 44;
-        ClimbingStairsSolution.climbStairs(n);
+//        int n = 44;
+//        ClimbingStairsSolution.climbStairs(n);
+
+        TreeNode treeNode = new TreeNode(1,null, new TreeNode(2,new TreeNode(3),null));
+        BinaryTreeInorderTraversalSolution.inorderTraversal(treeNode);
     }
 
 }
