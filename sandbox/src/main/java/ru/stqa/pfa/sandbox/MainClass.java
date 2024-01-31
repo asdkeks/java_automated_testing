@@ -57,10 +57,14 @@ public class MainClass {
 //        int n = 44;
 //        ClimbingStairsSolution.climbStairs(n);
 
-//        TreeNode treeNode = new TreeNode(5, new TreeNode(4,null, new TreeNode(1, new TreeNode(2), null)), new TreeNode(1,null, new TreeNode(4, new TreeNode(2), null)));
-        TreeNode treeNode = new TreeNode(1, new TreeNode(2,new TreeNode(3), new TreeNode(4)), new TreeNode(2,new TreeNode(4), new TreeNode(3)));
-//        TreeNode treeNode2 = new TreeNode(1,new TreeNode(1), null );
-        System.out.println(SymmetricTreeSolution.isSymmetric(treeNode));
+////        TreeNode treeNode = new TreeNode(5, new TreeNode(4,null, new TreeNode(1, new TreeNode(2), null)), new TreeNode(1,null, new TreeNode(4, new TreeNode(2), null)));
+//        TreeNode treeNode = new TreeNode(1, new TreeNode(2,new TreeNode(3), new TreeNode(4)), new TreeNode(2,new TreeNode(4), new TreeNode(3)));
+////        TreeNode treeNode2 = new TreeNode(1,new TreeNode(1), null );
+//        System.out.println(SymmetricTreeSolution.isSymmetric(treeNode));
+
+//        DailyTemperaturesSolution.dailyTemperatures(new int[]{73,74,75,71,69,72,76,73});
+
+        CheckIfTheSentenceIsPangramSolution.checkIfPangram("thequickbrownfoxjumpsoverthelazydog");
     }
 
 }
