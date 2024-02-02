@@ -64,7 +64,8 @@ public class MainClass {
 
 //        DailyTemperaturesSolution.dailyTemperatures(new int[]{73,74,75,71,69,72,76,73});
 
-        CheckIfTheSentenceIsPangramSolution.checkIfPangram("thequickbrownfoxjumpsoverthelazydog");
+//        CheckIfTheSentenceIsPangramSolution.checkIfPangram("thequickbrownfoxjumpsoverthelazydog");
+        SequentialDigitsSolution.tr(178546104, 812704742);
     }
 
 }
