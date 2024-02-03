@@ -65,7 +65,9 @@ public class MainClass {
 //        DailyTemperaturesSolution.dailyTemperatures(new int[]{73,74,75,71,69,72,76,73});
 
 //        CheckIfTheSentenceIsPangramSolution.checkIfPangram("thequickbrownfoxjumpsoverthelazydog");
-        SequentialDigitsSolution.sequentialDigits(178546104, 812704742);
+//        SequentialDigitsSolution.sequentialDigits(178546104, 812704742);
+
+        LetterCombinationsOfAPhoneNumberSolution.letterCombinations("797");
     }
 
 }
