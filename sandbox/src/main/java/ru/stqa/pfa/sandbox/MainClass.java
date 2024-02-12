@@ -1,8 +1,6 @@
 package ru.stqa.pfa.sandbox;
 
 
-import java.util.Arrays;
-
 public class MainClass {
 
     public static void main(String[] args) {
@@ -67,7 +65,20 @@ public class MainClass {
 //        CheckIfTheSentenceIsPangramSolution.checkIfPangram("thequickbrownfoxjumpsoverthelazydog");
 //        SequentialDigitsSolution.sequentialDigits(178546104, 812704742);
 
-        LetterCombinationsOfAPhoneNumberSolution.letterCombinations("797");
+//        LetterCombinationsOfAPhoneNumberSolution.letterCombinations("797");
+
+//        MinimumWindowSubstringSolution.minWindow("ab", "b");
+//        GroupAnagramsSolution.groupAnagrams(new String[]{"eat","tea","tan","ate","nat","bat"});
+
+//        SortCharactersByFrequencySolution.frequencySort("treeAAaa");
+//        PerfectSquaresSolution.numSquares(19);
+
+//        LargestDivisibleSubset.largestDivisibleSubset(new int[] {1, 2, 3});
+
+//        CherryPickupIISolution.cherryPickup(new int[][]{{3,1,1},{2,5,1},{1,5,5},{2,1,1}});
+
+        FindFirstAndLastPositionOfElementInSortedArraySolution.searchRange(new int[]{5,7,7,8,8,10},8);
     }
+
 
 }
