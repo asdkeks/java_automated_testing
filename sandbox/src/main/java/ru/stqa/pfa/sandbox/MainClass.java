@@ -77,7 +77,9 @@ public class MainClass {
 
 //        CherryPickupIISolution.cherryPickup(new int[][]{{3,1,1},{2,5,1},{1,5,5},{2,1,1}});
 
-        FindFirstAndLastPositionOfElementInSortedArraySolution.searchRange(new int[]{5,7,7,8,8,10},8);
+//        FindFirstAndLastPositionOfElementInSortedArraySolution.searchRange(new int[]{5,7,7,8,8,10},8);
+
+        RearrangeArrayElementsBySignSolution.rearrangeArray(new int[]{-1,1});
     }
 
 
